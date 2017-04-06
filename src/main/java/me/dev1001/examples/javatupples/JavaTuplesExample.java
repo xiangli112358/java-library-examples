@@ -74,16 +74,16 @@ public class JavaTuplesExample {
     // the iterable has excess elements, the remained elements will be skipped, if the iterable
     // does not have enough elements, nulls will be filled. The index parameter indicates the number
     // of elements to skip.
-    Triplet<String, String, String> fromIterable = Triplet
-        .fromIterable(Arrays.asList("a", "b", "c"));
+    Triplet<String, String, String> fromIterable =
+        Triplet.fromIterable(Arrays.asList("a", "b", "c"));
     System.out.println(fromIterable); // [a, b, c]
 
-    Triplet<String, String, String> fromIterableWithIndex = Triplet
-        .fromIterable(Arrays.asList("a", "b", "c", "d"), 0);
+    Triplet<String, String, String> fromIterableWithIndex =
+        Triplet.fromIterable(Arrays.asList("a", "b", "c", "d"), 0);
     System.out.println(fromIterableWithIndex); // [a, b, c]
 
-    Triplet<String, String, String> fromIterableFillNulls = Triplet
-        .fromIterable(Arrays.asList("a", "b", "c", "d"), 3);
+    Triplet<String, String, String> fromIterableFillNulls =
+        Triplet.fromIterable(Arrays.asList("a", "b", "c", "d"), 3);
     System.out.println(fromIterableFillNulls); // [d, null, null]
 
   }
@@ -105,8 +105,8 @@ public class JavaTuplesExample {
     value0 = ((String) triplet.getValue(0));
     value1 = ((Integer) triplet.getValue(1));
     value2 = ((Integer) triplet.getValue(2));
-    System.out.printf("value0=%s, value1=%d, value2=%d\n", value0, value1,
-        value2); // value0=a, value1=1, value2=2
+    // value0=a, value1=1, value2=2
+    System.out.printf("value0=%s, value1=%d, value2=%d\n", value0, value1, value2);
   }
 
   private static void testSetValues() {
