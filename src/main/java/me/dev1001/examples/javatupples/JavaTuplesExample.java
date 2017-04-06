@@ -63,8 +63,8 @@ public class JavaTuplesExample {
     // From collection
     // fromCollection() can only accept a collection which has the exactly corresponding number of
     // elements, otherwise IllegalArgumentException will be thrown.
-    Triplet<String, String, String> fromCollection = Triplet
-        .fromCollection(Arrays.asList("a", "b", "c"));
+    Triplet<String, String, String> fromCollection =
+        Triplet.fromCollection(Arrays.asList("a", "b", "c"));
     System.out.println(fromCollection); // [a, b, c]
 
     // From iterable
@@ -98,8 +98,9 @@ public class JavaTuplesExample {
     value0 = triplet.getValue0();
     value1 = triplet.getValue1();
     value2 = triplet.getValue2();
-    System.out.printf("value0=%s, value1=%d, value2=%d\n", value0, value1,
-        value2); // value0=a, value1=1, value2=2
+
+    // value0=a, value1=1, value2=2
+    System.out.printf("value0=%s, value1=%d, value2=%d\n", value0, value1, value2);
 
     // not type safe, need cast
     value0 = ((String) triplet.getValue(0));
