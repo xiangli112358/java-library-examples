@@ -6,12 +6,14 @@ import com.google.auto.value.AutoValue;
  * Created by hongzong.li on 4/13/17.
  */
 @AutoValue
-public abstract class PrefixedStyle {
+public abstract class PrefixedValue {
+
   public abstract String getName();
+
   public abstract int getAge();
 
-  public static PrefixedStyle create(String newName, int newAge) {
-    return new AutoValue_PrefixedStyle(newName, newAge);
+  public static PrefixedValue create(String newName, int newAge) {
+    return new AutoValue_PrefixedValue(newName, newAge);
   }
 
 }

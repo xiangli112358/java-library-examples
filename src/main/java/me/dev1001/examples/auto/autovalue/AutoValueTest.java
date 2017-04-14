@@ -14,7 +14,7 @@ import me.dev1001.examples.auto.autovalue.support.ArrayValue;
 import me.dev1001.examples.auto.autovalue.support.Named;
 import me.dev1001.examples.auto.autovalue.support.Person;
 import me.dev1001.examples.auto.autovalue.support.Person.Misc;
-import me.dev1001.examples.auto.autovalue.support.PrefixedStyle;
+import me.dev1001.examples.auto.autovalue.support.PrefixedValue;
 import me.dev1001.examples.auto.autovalue.support.Sex;
 import org.junit.Test;
 
@@ -79,7 +79,7 @@ public class AutoValueTest {
 
   @Test
   public void testPrefixedStyle() {
-    PrefixedStyle think = PrefixedStyle.create("think", 20);
+    PrefixedValue think = PrefixedValue.create("think", 20);
     assertEquals("think", think.getName());
     assertEquals(20, think.getAge());
   }
