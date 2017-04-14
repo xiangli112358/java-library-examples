@@ -60,7 +60,6 @@ public class AutoValueTest {
     assertSame(Sex.MALE, think.sex());
   }
 
-
   @Test
   public void testNullableValue() {
     Person think = Person.builder()
@@ -72,13 +71,11 @@ public class AutoValueTest {
     assertNull(think.sex());
   }
 
-
   @Test
   public void testNestedClass() {
     Misc misc = Misc.builder().address("beijing").build();
     assertEquals("beijing", misc.address());
   }
-
 
   @Test
   public void testPrefixedStyle() {
@@ -87,13 +84,11 @@ public class AutoValueTest {
     assertEquals(20, think.getAge());
   }
 
-
   @Test
   public void testMutator() {
     // person.setName("newName");
     // This will compile error, AutoValues are immutable and do not offer any mutator.
   }
-
 
   @Test
   public void testMemorized() {
