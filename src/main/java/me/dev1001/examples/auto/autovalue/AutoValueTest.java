@@ -8,6 +8,12 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Comparator;
 import me.dev1001.examples.auto.autovalue.support.AnnotationValue;
 import me.dev1001.examples.auto.autovalue.support.ArrayValue;
@@ -15,6 +21,7 @@ import me.dev1001.examples.auto.autovalue.support.Named;
 import me.dev1001.examples.auto.autovalue.support.Person;
 import me.dev1001.examples.auto.autovalue.support.Person.Misc;
 import me.dev1001.examples.auto.autovalue.support.PrefixedValue;
+import me.dev1001.examples.auto.autovalue.support.SerializableValue;
 import me.dev1001.examples.auto.autovalue.support.Sex;
 import org.junit.Test;
 
@@ -120,6 +127,21 @@ public class AutoValueTest {
   public void testAnnotation() {
     Named named = AnnotationValue.named("think");
     assertEquals("think", named.value());
+  }
+
+  @Test
+  public void testSerializable() throws IOException, ClassNotFoundException {
+    SerializableValue serializable = SerializableValue.create("think");
+    assertEquals("think", serializable.name());
+
+    ByteArrayOutputStream output = new ByteArrayOutputStream();
+    ObjectOutputStream objectOut = new ObjectOutputStream(output);
+    objectOut.writeObject(serializable);
+
+    ByteArrayInputStream input = new ByteArrayInputStream(output.toByteArray());
+    ObjectInputStream objectInput = new ObjectInputStream(input);
+    Serializable expected = (Serializable) objectInput.readObject();
+    assertEquals(expected, serializable);
   }
 
 }
