@@ -205,8 +205,7 @@ public class StripedExecutorService extends AbstractExecutorService {
   private void checkPoolIsRunning() {
     assert lock.isHeldByCurrentThread();
     if (state != State.RUNNING) {
-      throw new RejectedExecutionException(
-          "executor not running");
+      throw new RejectedExecutionException("executor not running");
     }
   }
 
@@ -227,12 +226,11 @@ public class StripedExecutorService extends AbstractExecutorService {
       checkPoolIsRunning();
       Object stripe = getStripe(command);
       if (stripe != null) {
-        SerialExecutor ser_exec = executors.get(stripe);
-        if (ser_exec == null) {
-          executors.put(stripe, ser_exec =
-              new SerialExecutor(stripe));
+        SerialExecutor serialExecutor = executors.get(stripe);
+        if (serialExecutor == null) {
+          executors.put(stripe, serialExecutor = new SerialExecutor(stripe));
         }
-        ser_exec.execute(command);
+        serialExecutor.execute(command);
       } else {
         executor.execute(command);
       }
@@ -285,8 +283,8 @@ public class StripedExecutorService extends AbstractExecutorService {
     try {
       shutdown();
       List<Runnable> result = new ArrayList<>();
-      for (SerialExecutor ser_ex : executors.values()) {
-        ser_ex.tasks.drainTo(result);
+      for (SerialExecutor serialExecutor : executors.values()) {
+        serialExecutor.tasks.drainTo(result);
       }
       result.addAll(executor.shutdownNow());
       return result;
@@ -334,22 +332,19 @@ public class StripedExecutorService extends AbstractExecutorService {
    * Returns true if the wrapped ExecutorService terminates
    * within the allotted amount of time.
    */
-  public boolean awaitTermination(long timeout, TimeUnit unit)
-      throws InterruptedException {
+  public boolean awaitTermination(long timeout, TimeUnit unit) throws InterruptedException {
     lock.lock();
     try {
       long waitUntil = System.nanoTime() + unit.toNanos(timeout);
       long remainingTime;
-      while ((remainingTime = waitUntil - System.nanoTime()) > 0
-          && !executors.isEmpty()) {
+      while ((remainingTime = waitUntil - System.nanoTime()) > 0 && !executors.isEmpty()) {
         terminating.awaitNanos(remainingTime);
       }
       if (remainingTime <= 0) {
         return false;
       }
       if (executors.isEmpty()) {
-        return executor.awaitTermination(
-            remainingTime, TimeUnit.NANOSECONDS);
+        return executor.awaitTermination(remainingTime, TimeUnit.NANOSECONDS);
       }
       return false;
     } finally {
@@ -363,11 +358,10 @@ public class StripedExecutorService extends AbstractExecutorService {
    * more quickly than necessary, but at least we can avoid a
    * memory leak.
    */
-  private void removeEmptySerialExecutor(Object stripe,
-      SerialExecutor ser_ex) {
-    assert ser_ex == executors.get(stripe);
+  private void removeEmptySerialExecutor(Object stripe, SerialExecutor serialExecutor) {
+    assert serialExecutor == executors.get(stripe);
     assert lock.isHeldByCurrentThread();
-    assert ser_ex.isEmpty();
+    assert serialExecutor.isEmpty();
 
     executors.remove(stripe);
     terminating.signalAll();
@@ -395,8 +389,7 @@ public class StripedExecutorService extends AbstractExecutorService {
     /**
      * The queue of unexecuted tasks.
      */
-    private final BlockingQueue<Runnable> tasks =
-        new LinkedBlockingQueue<>();
+    private final BlockingQueue<Runnable> tasks = new LinkedBlockingQueue<>();
     /**
      * The runnable that we are currently busy with.
      */
