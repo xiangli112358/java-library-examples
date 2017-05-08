@@ -1,4 +1,4 @@
-package me.dev1001.examples.jdk.java8.string.substring;
+package me.dev1001.examples.lang.string;
 
 /**
  * Created by hongzong.li on 4/20/17.

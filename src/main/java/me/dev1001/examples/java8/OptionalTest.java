@@ -1,4 +1,4 @@
-package me.dev1001.examples.jdk.java8;
+package me.dev1001.examples.java8;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
