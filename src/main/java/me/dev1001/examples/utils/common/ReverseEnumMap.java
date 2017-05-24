@@ -7,17 +7,17 @@ import java.util.Map;
  * Created by hongzong.li on 5/24/17.
  */
 public class ReverseEnumMap<E extends Enum<E> & EnumConverter<E, V>, V> {
-  private final Map<V, Enum<E>> reverse;
+  private final Map<V, E> reverse;
 
   public ReverseEnumMap(Class<E> clazz) {
     E[] enumConstants = clazz.getEnumConstants();
     reverse = new HashMap<>();
     for (E e : enumConstants) {
-      reverse.put(e.convert(), e);
+      reverse.put(e.get(), e);
     }
   }
 
-  public Enum<E> get(V value) {
+  public E get(V value) {
     return reverse.get(value);
   }
 }

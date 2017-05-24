@@ -8,12 +8,19 @@ public enum OrderStatus implements EnumConverter<OrderStatus, Integer> {
 
   private final int status;
 
+  private static final ReverseEnumMap<OrderStatus, Integer> reverseMap =
+      new ReverseEnumMap<>(OrderStatus.class);
+
   OrderStatus(int status) {
     this.status = status;
   }
 
   @Override
-  public Integer convert() {
+  public Integer get() {
     return status;
+  }
+
+  public static OrderStatus of(Integer status) {
+    return reverseMap.get(status);
   }
 }

@@ -6,7 +6,6 @@ package me.dev1001.examples.utils.common;
 public class EnumConverterExample {
 
   public static void main(String[] args) {
-    ReverseEnumMap<OrderStatus, Integer> statusMap = new ReverseEnumMap<>(OrderStatus.class);
-    System.out.println(statusMap.get(0));
+    System.out.println(OrderStatus.of(OrderStatus.CREATED.get()));
   }
 }
