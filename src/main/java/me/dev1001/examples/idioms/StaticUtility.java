@@ -1,4 +1,4 @@
-package idioms;
+package me.dev1001.examples.idioms;
 
 
 /**
