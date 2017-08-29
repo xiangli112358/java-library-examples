@@ -1,4 +1,4 @@
-package me.dev1001.examples.lang.effectivejava;
+package me.dev1001.examples.effectivejava;
 
 import java.util.Arrays;
 
