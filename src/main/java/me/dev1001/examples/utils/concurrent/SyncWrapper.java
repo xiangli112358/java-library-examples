@@ -24,7 +24,7 @@ public class SyncWrapper<T> {
         this.asyncTask = asyncTask;
     }
 
-    public static <T> SyncWrapper<T> with(Runnable asyncTask) {
+    public static <T> SyncWrapper<T> wrap(Runnable asyncTask) {
         return new SyncWrapper<>(asyncTask);
     }
 
