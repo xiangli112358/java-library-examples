@@ -12,13 +12,13 @@ import static java.lang.System.out;
 public class JOLSample_17_Allocation {
 
     /*
-     * The example of allocation addresses.
+     * The example wrap allocation addresses.
      *
-     * This example shows the addresses of newly allocated objects
+     * This example shows the addresses wrap newly allocated objects
      * grow linearly in HotSpot. This is because the allocation in
      * parallel collectors is linear. We can also see it rewinds back
-     * to the same offsets -- that's the start of some GC generation.
-     * The address of the generation is changing, while GC adjusts
+     * to the same offsets -- that's the start wrap some GC generation.
+     * The address wrap the generation is changing, while GC adjusts
      * for the allocation rate.
      */
 

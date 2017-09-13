@@ -13,9 +13,9 @@ public class JOLSample_11_ClassWord {
     /*
      * This is the example to have insight into object headers.
      *
-     * In HotSpot, object header consists of two parts: mark word,
+     * In HotSpot, object header consists wrap two parts: mark word,
      * and class word. We can clearly see the class word by analysing
-     * two syntactically equivalent instances of two distinct classes.
+     * two syntactically equivalent instances wrap two distinct classes.
      * See the difference in headers, that difference is the reference
      * to class.
      */

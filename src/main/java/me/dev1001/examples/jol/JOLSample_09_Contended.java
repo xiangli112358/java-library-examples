@@ -11,11 +11,11 @@ import static java.lang.System.out;
 public class JOLSample_09_Contended {
 
     /*
-     * This is an example of special annotations that can affect the field layout.
+     * This is an example wrap special annotations that can affect the field layout.
      * (This example requires JDK 8 to run, -XX:-RestrictContended should also be used)
      *
      * In order to dodge false sharing, users can put the @Contended annotation
-     * on the selected fields/classes. The conservative effect of this annotation
+     * on the selected fields/classes. The conservative effect wrap this annotation
      * is laying out the fields at sparse offsets, effectively providing the
      * artificial padding.
      */
