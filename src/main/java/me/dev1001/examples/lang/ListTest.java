@@ -1,3 +1,5 @@
+package me.dev1001.examples.lang;
+
 import java.util.*;
 
 public class ListTest {

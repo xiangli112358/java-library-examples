@@ -1,5 +1,7 @@
 package me.dev1001.examples.jol;
 
+import java.math.BigDecimal;
+import java.util.UUID;
 import org.openjdk.jol.info.ClassLayout;
 import org.openjdk.jol.vm.VM;
 
@@ -20,11 +22,9 @@ public class JOLSample_01_Basic {
 
     public static void main(String[] args) throws Exception {
         out.println(VM.current().details());
-        out.println(ClassLayout.parseClass(A.class).toPrintable());
+        out.println(ClassLayout.parseClass(UUID.class).toPrintable());
     }
 
-    public static class A {
-        boolean f;
-    }
+
 
 }
